@@ -1,0 +1,6 @@
+name: BAirDropDiscordAddon
+version: '${project.version}'
+main: ru.metveylegenda.bairdropdiscordaddon.BAirDropDiscordAddon
+api-version: '1.16'
+depend:
+  - BAirDrop
