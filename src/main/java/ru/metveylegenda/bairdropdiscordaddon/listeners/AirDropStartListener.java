@@ -3,6 +3,7 @@ package ru.metveylegenda.bairdropdiscordaddon.listeners;
 import java.awt.Color;
 import java.io.IOException;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.by1337.bairdrop.api.event.AirDropStartEvent;
@@ -15,7 +16,7 @@ public class AirDropStartListener implements Listener {
     @EventHandler
     public void onAirDropStart(AirDropStartEvent event) {
         FileConfiguration config = BAirDropDiscordAddon.getInstance().getConfig();
-        String airdropID = event.getAirDrop().getId();
+        String airdropID = event.getAirDrop().getSuperName();
 
         String embedTitle = config.getString(airdropID + ".airDropStartMessage.embed.title");
         String embedDescription = event.getAirDrop().replaceInternalPlaceholder(config.getString(airdropID + ".airDropStartMessage.embed.description"));
@@ -34,6 +35,7 @@ public class AirDropStartListener implements Listener {
             webhook.execute();
         } catch (Exception e) {
             BAirDropDiscordAddon.getInstance().getLogger().warning("Ошибка " + e);
+
         }
     }
 }
